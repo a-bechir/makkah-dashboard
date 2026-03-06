@@ -1,1 +1,444 @@
+/* ========================================
+   التنسيقات الأساسية المشتركة
+   ======================================== */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-primary: 'Cairo', sans-serif;
+    --transition-speed: 0.3s;
+    --border-radius: 12px;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* ========================================
+   الشريط العلوي
+   ======================================== */
+
+.header {
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all var(--transition-speed);
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-icon {
+    font-size: 2.5rem;
+    color: var(--accent-primary);
+}
+
+.header-text h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.header-text p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.date-time {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.theme-toggle {
+    background: var(--accent-primary);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--header-text);
+    transition: all var(--transition-speed);
+    box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: var(--glow-effect);
+}
+
+/* ========================================
+   التبويبات
+   ======================================== */
+
+.tabs {
+    background: var(--bg-secondary);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow-sm);
+}
+
+.tab-btn {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all var(--transition-speed);
+}
+
+.tab-btn i {
+    font-size: 1.2rem;
+}
+
+.tab-btn:hover {
+    background: var(--accent-primary);
+    color: var(--header-text);
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.tab-btn.active {
+    background: var(--accent-primary);
+    color: var(--header-text);
+    border-color: var(--accent-primary);
+    box-shadow: var(--glow-effect);
+}
+
+/* ========================================
+   المحتوى الرئيسي
+   ======================================== */
+
+.main-content {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   بطاقات المؤشرات (KPI)
+   ======================================== */
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.kpi-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: all var(--transition-speed);
+    box-shadow: var(--shadow-sm);
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-primary);
+}
+
+.kpi-icon {
+    background: var(--accent-primary);
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--header-text);
+    flex-shrink: 0;
+    box-shadow: var(--glow-effect);
+}
+
+.kpi-content {
+    flex: 1;
+}
+
+.kpi-content h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.kpi-value {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.kpi-change {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+}
+
+.kpi-change.positive {
+    color: var(--success-color);
+    background: var(--success-bg);
+}
+
+.kpi-change.negative {
+    color: var(--danger-color);
+    background: var(--danger-bg);
+}
+
+.kpi-change.neutral {
+    color: var(--warning-color);
+    background: var(--warning-bg);
+}
+
+.stars {
+    display: flex;
+    gap: 0.2rem;
+    font-size: 1rem;
+    color: var(--accent-primary);
+    margin-top: 0.3rem;
+}
+
+/* ========================================
+   الرسوم البيانية
+   ======================================== */
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.chart-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-speed);
+}
+
+.chart-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-primary);
+}
+
+.chart-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.chart-card canvas {
+    max-height: 300px;
+}
+
+/* ========================================
+   التذييل
+   ======================================== */
+
+.footer {
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    box-shadow: var(--shadow-md);
+}
+
+.footer p {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* ========================================
+   التجاوب مع الأجهزة المحمولة
+   ======================================== */
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-right {
+        flex-direction: column;
+    }
+
+    .header-text h1 {
+        font-size: 1.4rem;
+    }
+
+    .tabs {
+        padding: 0.8rem 1rem;
+    }
+
+    .tab-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .main-content {
+        padding: 0 1rem;
+    }
+
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .kpi-value {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-text h1 {
+        font-size: 1.2rem;
+    }
+
+    .header-icon {
+        font-size: 2rem;
+    }
+
+    .tab-btn span {
+        display: none;
+    }
+
+    .kpi-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .kpi-icon {
+        margin: 0 auto;
+    }
+}
+
+/* ========================================
+   تأثيرات إضافية
+   ======================================== */
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.kpi-icon {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+/* سكرول ناعم */
+html {
+    scroll-behavior: smooth;
+}
+
+/* شريط التمرير المخصص */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-secondary);
+}

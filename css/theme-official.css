@@ -1,0 +1,279 @@
+/* ========================================
+   نسخة ألوان المملكة العربية السعودية
+   الأخضر الداكن والذهبي
+   ======================================== */
+
+:root {
+    /* الألوان الرئيسية */
+    --primary-green: #165D31;
+    --primary-green-light: #1B7A3E;
+    --primary-green-dark: #0F4322;
+    --accent-gold: #D4AF37;
+    --accent-gold-light: #F4D03F;
+    --accent-gold-dark: #B8941F;
+
+    /* الخلفيات */
+    --bg-primary: #F8F9FA;
+    --bg-secondary: #FFFFFF;
+    --card-bg: #FFFFFF;
+
+    /* النصوص */
+    --text-primary: #1A1A2E;
+    --text-secondary: #6C757D;
+
+    /* Header */
+    --header-bg: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+    --header-text: #FFFFFF;
+
+    /* الألوان المساعدة */
+    --accent-primary: var(--accent-gold);
+    --accent-secondary: var(--primary-green);
+    --border-color: rgba(22, 93, 49, 0.2);
+
+    /* حالات الإشعارات */
+    --success-color: #28A745;
+    --success-bg: rgba(40, 167, 69, 0.1);
+    --warning-color: #FFC107;
+    --warning-bg: rgba(255, 193, 7, 0.1);
+    --danger-color: #DC3545;
+    --danger-bg: rgba(220, 53, 69, 0.1);
+
+    /* تأثيرات */
+    --glow-effect: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* ========================================
+   تخصيص الشريط العلوي
+   ======================================== */
+
+.header {
+    background: var(--header-bg);
+    border-bottom: 3px solid var(--accent-gold);
+}
+
+.header-icon {
+    color: var(--accent-gold);
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+.theme-toggle {
+    background: var(--accent-gold);
+    color: var(--primary-green-dark);
+}
+
+.theme-toggle:hover {
+    background: var(--accent-gold-light);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+}
+
+/* ========================================
+   التبويبات
+   ======================================== */
+
+.tabs {
+    background: linear-gradient(to bottom, #FFFFFF, #F8F9FA);
+}
+
+.tab-btn {
+    border-color: rgba(22, 93, 49, 0.3);
+}
+
+.tab-btn:hover {
+    background: var(--accent-gold);
+    color: #FFFFFF;
+    border-color: var(--accent-gold);
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-light) 100%);
+    color: var(--primary-green-dark);
+    border-color: var(--accent-gold);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* ========================================
+   بطاقات KPI
+   ======================================== */
+
+.kpi-card {
+    background: var(--card-bg);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.kpi-card:hover {
+    border-color: var(--accent-gold);
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+}
+
+.kpi-icon {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-light) 100%);
+    color: var(--primary-green-dark);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* تخصيص أيقونات البطاقات حسب التبويب */
+#hajj .kpi-card:nth-child(1) .kpi-icon {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-light) 100%);
+}
+
+#hajj .kpi-card:nth-child(2) .kpi-icon {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-light) 100%);
+    color: #FFFFFF;
+}
+
+#hajj .kpi-card:nth-child(3) .kpi-icon {
+    background: linear-gradient(135deg, var(--accent-gold-dark) 0%, var(--accent-gold) 100%);
+}
+
+#hajj .kpi-card:nth-child(4) .kpi-icon {
+    background: linear-gradient(135deg, var(--primary-green-light) 0%, #28A745 100%);
+    color: #FFFFFF;
+}
+
+#security .kpi-card .kpi-icon {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-light) 100%);
+    color: #FFFFFF;
+}
+
+#health .kpi-card .kpi-icon {
+    background: linear-gradient(135deg, #28A745 0%, #20C997 100%);
+    color: #FFFFFF;
+}
+
+#rights .kpi-card .kpi-icon {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-light) 100%);
+    color: var(--primary-green-dark);
+}
+
+/* ========================================
+   الرسوم البيانية
+   ======================================== */
+
+.chart-card {
+    background: var(--card-bg);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.chart-card:hover {
+    border-color: var(--accent-gold);
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+}
+
+.chart-card h3 {
+    color: var(--primary-green);
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+.chart-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-gold-light) 100%);
+    border-radius: 2px;
+}
+
+/* ========================================
+   التذييل
+   ======================================== */
+
+.footer {
+    background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green) 100%);
+    border-top: 3px solid var(--accent-gold);
+}
+
+/* ========================================
+   تأثيرات خاصة
+   ======================================== */
+
+/* توهج خفيف للعناصر المهمة */
+.kpi-value {
+    color: var(--primary-green);
+    text-shadow: 0 2px 4px rgba(22, 93, 49, 0.1);
+}
+
+/* شريط التمرير */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--accent-gold-light) 0%, var(--accent-gold) 100%);
+}
+
+/* النجوم */
+.stars i {
+    color: var(--accent-gold);
+    filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
+}
+
+/* ========================================
+   تحسينات بصرية إضافية
+   ======================================== */
+
+/* تدرج خفيف للخلفية */
+body {
+    background: linear-gradient(to bottom, #F8F9FA 0%, #FFFFFF 100%);
+    background-attachment: fixed;
+}
+
+/* إطار ذهبي للبطاقات النشطة */
+.kpi-card:hover::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light));
+    border-radius: var(--border-radius);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.kpi-card {
+    position: relative;
+    z-index: 1;
+}
+
+/* تأثير تألق للأيقونات */
+@keyframes shimmer {
+    0% {
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(212, 175, 55, 0.5);
+    }
+    100% {
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+}
+
+.kpi-icon {
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+/* تأثير hover للزر */
+.theme-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover i {
+    transform: rotate(-20deg);
+}
+
+/* خط فاصل ذهبي */
+.main-content::before {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    margin: 0 auto 2rem;
+    border-radius: 2px;
+}

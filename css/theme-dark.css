@@ -1,0 +1,387 @@
+/* ========================================
+   نسخة الوضع الداكن مع ألوان نيون مضيئة
+   Dark Mode with Neon Colors
+   ======================================== */
+
+:root[data-theme="dark"] {
+    /* خلفيات داكنة */
+    --bg-primary: #0D0D1A;
+    --bg-secondary: #1A1A2E;
+    --card-bg: #252542;
+
+    /* النصوص */
+    --text-primary: #FFFFFF;
+    --text-secondary: #94A3B8;
+
+    /* Header */
+    --header-bg: linear-gradient(135deg, #1A1A2E 0%, #0D0D1A 100%);
+    --header-text: #FFFFFF;
+
+    /* ألوان نيون مضيئة */
+    --neon-blue: #00D4FF;
+    --neon-purple: #A855F7;
+    --neon-pink: #FF006E;
+    --neon-green: #00FF88;
+    --neon-orange: #FF9500;
+    --neon-cyan: #00FFF5;
+    --neon-yellow: #FFD700;
+
+    /* الألوان الرئيسية */
+    --accent-primary: var(--neon-blue);
+    --accent-secondary: var(--neon-purple);
+    --border-color: rgba(168, 85, 247, 0.3);
+
+    /* حالات الإشعارات */
+    --success-color: var(--neon-green);
+    --success-bg: rgba(0, 255, 136, 0.1);
+    --warning-color: var(--neon-orange);
+    --warning-bg: rgba(255, 149, 0, 0.1);
+    --danger-color: var(--neon-pink);
+    --danger-bg: rgba(255, 0, 110, 0.1);
+
+    /* تأثيرات التوهج */
+    --glow-effect: 0 0 20px currentColor;
+    --glow-blue: 0 0 30px rgba(0, 212, 255, 0.6);
+    --glow-purple: 0 0 30px rgba(168, 85, 247, 0.6);
+    --glow-pink: 0 0 30px rgba(255, 0, 110, 0.6);
+    --glow-green: 0 0 30px rgba(0, 255, 136, 0.6);
+}
+
+/* ========================================
+   الخلفية والجسم
+   ======================================== */
+
+body[data-theme="dark"] {
+    background: radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+                #0D0D1A;
+    background-attachment: fixed;
+}
+
+/* ========================================
+   الشريط العلوي
+   ======================================== */
+
+[data-theme="dark"] .header {
+    background: linear-gradient(135deg, #1A1A2E 0%, #252542 100%);
+    border-bottom: 2px solid var(--neon-purple);
+    box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+}
+
+[data-theme="dark"] .header-icon {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 20px rgba(0, 255, 245, 0.8);
+    animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(0, 255, 245, 0.8),
+                     0 0 40px rgba(0, 255, 245, 0.4);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(0, 255, 245, 1),
+                     0 0 60px rgba(0, 255, 245, 0.6);
+    }
+}
+
+[data-theme="dark"] .theme-toggle {
+    background: linear-gradient(135deg, var(--neon-orange) 0%, var(--neon-yellow) 100%);
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 149, 0, 0.5);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+    box-shadow: 0 0 30px rgba(255, 149, 0, 0.8);
+    transform: scale(1.1) rotate(-15deg);
+}
+
+/* ========================================
+   التبويبات
+   ======================================== */
+
+[data-theme="dark"] .tabs {
+    background: var(--bg-secondary);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .tab-btn {
+    background: var(--card-bg);
+    border-color: rgba(168, 85, 247, 0.4);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .tab-btn:hover {
+    background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-blue) 100%);
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+[data-theme="dark"] .tab-btn.active {
+    background: linear-gradient(135deg, var(--neon-blue) 0%, var(--neon-purple) 100%);
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.6),
+                0 0 50px rgba(168, 85, 247, 0.3);
+}
+
+/* ========================================
+   بطاقات KPI - ألوان متنوعة
+   ======================================== */
+
+[data-theme="dark"] .kpi-card {
+    background: var(--card-bg);
+    border-color: rgba(168, 85, 247, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .kpi-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 30px rgba(168, 85, 247, 0.4);
+    transform: translateY(-5px);
+}
+
+/* تخصيص ألوان لكل بطاقة في تبويب الحج */
+[data-theme="dark"] #hajj .kpi-card:nth-child(1) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-blue) 0%, var(--neon-cyan) 100%);
+    box-shadow: var(--glow-blue);
+}
+
+[data-theme="dark"] #hajj .kpi-card:nth-child(2) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-pink) 100%);
+    box-shadow: var(--glow-purple);
+}
+
+[data-theme="dark"] #hajj .kpi-card:nth-child(3) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-orange) 100%);
+    box-shadow: var(--glow-pink);
+}
+
+[data-theme="dark"] #hajj .kpi-card:nth-child(4) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-green) 0%, var(--neon-cyan) 100%);
+    box-shadow: var(--glow-green);
+}
+
+/* الشؤون الأمنية */
+[data-theme="dark"] #security .kpi-card:nth-child(1) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-green) 0%, #00FF88 100%);
+    box-shadow: var(--glow-green);
+}
+
+[data-theme="dark"] #security .kpi-card:nth-child(2) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-blue) 0%, var(--neon-purple) 100%);
+    box-shadow: var(--glow-blue);
+}
+
+[data-theme="dark"] #security .kpi-card:nth-child(3) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-orange) 0%, var(--neon-yellow) 100%);
+    box-shadow: 0 0 30px rgba(255, 149, 0, 0.6);
+}
+
+[data-theme="dark"] #security .kpi-card:nth-child(4) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-blue) 100%);
+    box-shadow: 0 0 30px rgba(0, 255, 245, 0.6);
+}
+
+/* الشؤون التنموية */
+[data-theme="dark"] #health .kpi-card:nth-child(1) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-blue) 100%);
+    box-shadow: var(--glow-purple);
+}
+
+[data-theme="dark"] #health .kpi-card:nth-child(2) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-purple) 100%);
+    box-shadow: var(--glow-pink);
+}
+
+[data-theme="dark"] #health .kpi-card:nth-child(3) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-green) 0%, var(--neon-cyan) 100%);
+    box-shadow: var(--glow-green);
+}
+
+[data-theme="dark"] #health .kpi-card:nth-child(4) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-orange) 0%, var(--neon-pink) 100%);
+    box-shadow: 0 0 30px rgba(255, 0, 110, 0.6);
+}
+
+/* وكالة الحقوق */
+[data-theme="dark"] #rights .kpi-card:nth-child(1) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-blue) 100%);
+    box-shadow: 0 0 30px rgba(0, 255, 245, 0.6);
+}
+
+[data-theme="dark"] #rights .kpi-card:nth-child(2) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-pink) 100%);
+    box-shadow: var(--glow-purple);
+}
+
+[data-theme="dark"] #rights .kpi-card:nth-child(3) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-orange) 0%, var(--neon-yellow) 100%);
+    box-shadow: 0 0 30px rgba(255, 149, 0, 0.6);
+}
+
+[data-theme="dark"] #rights .kpi-card:nth-child(4) .kpi-icon {
+    background: linear-gradient(135deg, var(--neon-green) 0%, var(--neon-cyan) 100%);
+    box-shadow: var(--glow-green);
+}
+
+[data-theme="dark"] .kpi-icon {
+    color: #000;
+}
+
+/* ========================================
+   الرسوم البيانية
+   ======================================== */
+
+[data-theme="dark"] .chart-card {
+    background: var(--card-bg);
+    border-color: rgba(168, 85, 247, 0.3);
+}
+
+[data-theme="dark"] .chart-card:hover {
+    border-color: var(--neon-purple);
+    box-shadow: 0 8px 30px rgba(168, 85, 247, 0.3);
+}
+
+[data-theme="dark"] .chart-card h3 {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0, 255, 245, 0.5);
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+[data-theme="dark"] .chart-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-purple), var(--neon-blue));
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--neon-purple);
+}
+
+/* ========================================
+   التذييل
+   ======================================== */
+
+[data-theme="dark"] .footer {
+    background: linear-gradient(135deg, #1A1A2E 0%, #252542 100%);
+    border-top: 2px solid var(--neon-purple);
+    box-shadow: 0 -4px 20px rgba(168, 85, 247, 0.3);
+}
+
+/* ========================================
+   القيم والنصوص
+   ======================================== */
+
+[data-theme="dark"] .kpi-value {
+    color: var(--text-primary);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .stars i {
+    color: var(--neon-yellow);
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+}
+
+/* ========================================
+   شريط التمرير
+   ======================================== */
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--neon-purple) 0%, var(--neon-blue) 100%);
+    box-shadow: 0 0 10px var(--neon-purple);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--neon-blue) 0%, var(--neon-cyan) 100%);
+    box-shadow: 0 0 15px var(--neon-blue);
+}
+
+/* ========================================
+   تأثيرات خاصة - Grid متوهج
+   ======================================== */
+
+[data-theme="dark"] .main-content::before {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--neon-purple), 
+        var(--neon-blue), 
+        var(--neon-purple), 
+        transparent
+    );
+    margin: 0 auto 2rem;
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--neon-purple);
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* تأثير الجسيمات المتحركة */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+[data-theme="dark"] .kpi-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* خطوط متوهجة للحدود */
+[data-theme="dark"] .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--border-radius);
+    padding: 2px;
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue), var(--neon-cyan));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+[data-theme="dark"] .kpi-card:hover::before {
+    opacity: 0.5;
+}
+
+/* تأثير الضوء المتحرك */
+@keyframes lightSweep {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+[data-theme="dark"] .tab-btn.active {
+    background-size: 200% auto;
+    animation: lightSweep 3s linear infinite;
+}
