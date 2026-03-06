@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة معلومات إمارة منطقة مكة المكرمة</title>
+    
+    <!-- خط Cairo العربي -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- مكتبة Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- ملفات CSS -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/theme-official.css" id="theme-stylesheet">
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-right">
+                <i class="fas fa-kaaba header-icon"></i>
+                <div class="header-text">
+                    <h1>إمارة منطقة مكة المكرمة</h1>
+                    <p>لوحة المعلومات الرئيسية</p>
+                </div>
+            </div>
+            <div class="header-left">
+                <div class="date-time">
+                    <i class="far fa-calendar-alt"></i>
+                    <span id="current-date"></span>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" title="تبديل النسخة">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- التبويبات -->
+    <nav class="tabs">
+        <button class="tab-btn active" data-tab="hajj">
+            <i class="fas fa-kaaba"></i>
+            <span>الحج والعمرة</span>
+        </button>
+        <button class="tab-btn" data-tab="security">
+            <i class="fas fa-shield-alt"></i>
+            <span>الشؤون الأمنية</span>
+        </button>
+        <button class="tab-btn" data-tab="health">
+            <i class="fas fa-hospital"></i>
+            <span>الشؤون التنموية</span>
+        </button>
+        <button class="tab-btn" data-tab="rights">
+            <i class="fas fa-balance-scale"></i>
+            <span>وكالة الحقوق</span>
+        </button>
+    </nav>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <!-- تبويب الحج والعمرة -->
+        <div class="tab-content active" id="hajj">
+            <!-- بطاقات KPI -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>إجمالي المعتمرين اليوم</h3>
+                        <p class="kpi-value" id="hajj-total">0</p>
+                        <span class="kpi-change positive">
+                            <i class="fas fa-arrow-up"></i> 12.5%
+                        </span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>المتوسط الأسبوعي</h3>
+                        <p class="kpi-value" id="hajj-weekly">0</p>
+                        <span class="kpi-change positive">
+                            <i class="fas fa-arrow-up"></i> 8.3%
+                        </span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>نسبة إشغال المساكن</h3>
+                        <p class="kpi-value" id="hajj-occupancy">0%</p>
+                        <span class="kpi-change neutral">
+                            <i class="fas fa-minus"></i> 0.5%
+                        </span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>حافلات النقل العاملة</h3>
+                        <p class="kpi-value" id="hajj-buses">0</p>
+                        <span class="kpi-change positive">
+                            <i class="fas fa-check-circle"></i> جميعها نشطة
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الرسوم البيانية -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>المعتمرون خلال آخر 7 أيام</h3>
+                    <canvas id="hajj-line-chart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>التوزيع حسب الجنسية</h3>
+                    <canvas id="hajj-pie-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- تبويب الشؤون الأمنية -->
+        <div class="tab-content" id="security">
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>البلاغات اليومية</h3>
+                        <p class="kpi-value" id="security-reports">0</p>
+                        <span class="kpi-change negative">
+                            <i class="fas fa-arrow-down"></i> 15.2%
+                        </span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>نسبة المعالجة</h3>
+                        <p class="kpi-value" id="security-resolved">0%</p>
+                        <span class="kpi-change positive">
+                            <i class="fas fa-arrow-up"></i> 3.7%
+                        </span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>متوسط وقت الاستجابة</h3>
+                        <p class="kpi-value" id="security-response">0 دقيقة</p>
+                        <span class="kpi-change positive">
+                            <i class="fas fa-arrow-down"></i> 2 دقيقة
+                        </span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>الفرق الميدانية</h3>
+                        <p class="kpi-value" id="security-teams">0</p>
+                        <span class="kpi-change positive">
+                            <i class="fas fa-check-circle"></i> جاهزة
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>البلاغات خلال الأسبوع</h3>
+                    <canvas id="security-area-chart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>توزيع البلاغات حسب النوع</h3>
+                    <canvas id="security-doughnut-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- تبويب الشؤون التنموية (الصحية) -->
+        <div class="tab-content" id="health">
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-hospital-alt"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>عدد المستشفيات</h3>
+                        <p class="kpi-value" id="health-hospitals">0</p>
+                        <span class="kpi-change neutral">
+                            <i class="fas fa-info-circle"></i> عاملة
+                        </span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>نسبة إشغال الأسرّة</h3>
+                        <p class="kpi-value" id="health-occupancy">0%</p>
+                        <span class="kpi-change positive">
+                            <i class="fas fa-arrow-up"></i> 5.1%
+                        </span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>المراجعين اليوم</h3>
+                        <p class="kpi-value" id="health-patients">0</p>
+                        <span class="kpi-change positive">
+                            <i class="fas fa-arrow-up"></i> 7.8%
+                        </span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>حالات الطوارئ</h3>
+                        <p class="kpi-value" id="health-emergency">0</p>
+                        <span class="kpi-change negative">
+                            <i class="fas fa-arrow-down"></i> 12.3%
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>الأسرّة المشغولة والمتاحة</h3>
+                    <canvas id="health-bar-chart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>المراجعين خلال الأسبوع</h3>
+                    <canvas id="health-line-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- تبويب وكالة الحقوق -->
+        <div class="tab-content" id="rights">
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>الشكاوى المستلمة</h3>
+                        <p class="kpi-value" id="rights-received">0</p>
+                        <span class="kpi-change positive">
+                            <i class="fas fa-arrow-up"></i> 4.2%
+                        </span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>نسبة الإنجاز</h3>
+                        <p class="kpi-value" id="rights-completed">0%</p>
+                        <span class="kpi-change positive">
+                            <i class="fas fa-arrow-up"></i> 8.5%
+                        </span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>متوسط وقت المعالجة</h3>
+                        <p class="kpi-value" id="rights-avg-time">0 يوم</p>
+                        <span class="kpi-change positive">
+                            <i class="fas fa-arrow-down"></i> يوم واحد
+                        </span>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <h3>رضا المستفيدين</h3>
+                        <p class="kpi-value" id="rights-satisfaction">0%</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>توزيع الشكاوى حسب النوع</h3>
+                    <canvas id="rights-pie-chart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>معدل المعالجة الشهري</h3>
+                    <canvas id="rights-bar-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- تذييل الصفحة -->
+    <footer class="footer">
+        <p>&copy; 2026 إمارة منطقة مكة المكرمة - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <!-- ملفات JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
